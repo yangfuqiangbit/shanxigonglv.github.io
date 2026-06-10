@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>端午节山西行 · 平遥 + 大同 三日游</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+
+  :root {
+    --ink:       #1a1208;
+    --paper:     #faf7f0;
+    --gold:      #c9922a;
+    --gold-lt:   #f0dca8;
+    --rust:      #8b3a2a;
+    --jade:      #3a6b5a;
+    --stone:     #6b6256;
+    --line:      #d9cfc0;
+    --day1:      #8b3a2a;
+    --day2:      #c9922a;
+    --day3:      #3a6b5a;
+    --train:     #2c4a7c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 64px 40px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,146,42,.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(139,58,42,.15) 0%, transparent 60%);
+  }
+  .hero-inner { position: relative; max-width: 860px; margin: 0 auto; }
+  .hero-eyebrow {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(250,247,240,.7);
+    margin-bottom: 36px;
+    max-width: 560px;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .meta-badge {
+    background: rgba(250,247,240,.08);
+    border: 1px solid rgba(250,247,240,.18);
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: var(--gold-lt);
+  }
+  .meta-badge strong { color: #fff; margin-right: 4px; }
+
+  /* ── MAIN WRAPPER ── */
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── SECTION HEADER ── */
+  .sec-head {
+    padding: 52px 0 20px;
+    border-bottom: 1.5px solid var(--line);
+    margin-bottom: 32px;
+  }
+  .sec-head h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sec-head h2::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 22px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  /* ── TRAIN TABLE ── */
+  .train-block {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .train-head {
+    background: var(--train);
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .train-rows { width: 100%; border-collapse: collapse; }
+  .train-rows th {
+    background: #f0f4fa;
+    font-size: 12px;
+    color: var(--stone);
+    font-weight: 500;
+    padding: 8px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+  }
+  .train-rows td {
+    padding: 10px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid #f2ede4;
+    vertical-align: middle;
+  }
+  .train-rows tr:last-child td { border-bottom: none; }
+  .train-rows tr:hover td { background: #faf8f3; }
+  .train-no {
+    font-weight: 600;
+    color: var(--train);
+    font-size: 14px;
+  }
+  .time-chip {
+    background: var(--gold-lt);
+    color: var(--rust);
+    font-weight: 600;
+    font-size: 13px;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .tag-rec {
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+    margin-left: 6px;
+  }
+  .tag-alt {
+    background: #fff8e1;
+    color: #f57f17;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+    margin-left: 6px;
+  }
+  .train-note {
+    font-size: 12px;
+    color: var(--stone);
+    padding: 10px 16px;
+    background: #f8f6f0;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ── ROUTE DIAGRAM ── */
+  .route-diagram {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 28px 0;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .route-city {
+    text-align: center;
+    min-width: 90px;
+  }
+  .route-city .city-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .route-city .city-sub {
+    font-size: 11px;
+    color: var(--stone);
+    margin-top: 2px;
+  }
+  .route-arrow {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-width: 80px;
+  }
+  .route-arrow .arrow-line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--gold));
+    position: relative;
+  }
+  .route-arrow .arrow-line::after {
+    content: '▶';
+    position: absolute;
+    right: -2px;
+    top: -8px;
+    color: var(--gold);
+    font-size: 10px;
+  }
+  .route-arrow .arrow-info {
+    font-size: 11px;
+    color: var(--stone);
+    margin-top: 5px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* ── DAY CARDS ── */
+  .day-card {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  .day-header {
+    padding: 18px 24px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .day-badge {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+  }
+  .day-badge .d-num { font-size: 20px; font-weight: 700; line-height: 1; }
+  .day-badge .d-label { font-size: 9px; letter-spacing: .1em; margin-top: 2px; }
+  .day-title {
+    flex: 1;
+  }
+  .day-title h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .day-title .day-date {
+    font-size: 12px;
+    color: var(--stone);
+  }
+  .day-body { padding: 0 24px 24px; }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    bottom: 6px;
+    width: 1.5px;
+    background: var(--line);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+  }
+  .tl-item:last-child { margin-bottom: 0; }
+  .tl-dot {
+    position: absolute;
+    left: -24px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1.5px currentColor;
+  }
+  .tl-time {
+    font-size: 11px;
+    color: var(--stone);
+    font-weight: 500;
+    letter-spacing: .05em;
+    margin-bottom: 3px;
+  }
+  .tl-title {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tl-desc {
+    font-size: 13px;
+    color: var(--stone);
+    line-height: 1.7;
+  }
+
+  /* Special items */
+  .tl-show {
+    background: linear-gradient(135deg, #fff8f0, #fff2e8);
+    border: 1px solid #f0c080;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 4px;
+  }
+  .tl-show .show-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--rust);
+    margin-bottom: 6px;
+  }
+  .tl-show .show-meta {
+    font-size: 12px;
+    color: var(--stone);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .tl-show .show-meta span::before {
+    margin-right: 4px;
+  }
+
+  .tl-transit {
+    background: #f0f4fa;
+    border-left: 3px solid var(--train);
+    border-radius: 0 6px 6px 0;
+    padding: 10px 14px;
+    margin-top: 4px;
+    font-size: 13px;
+    color: #2c4a7c;
+  }
+
+  /* ── TAG CHIPS ── */
+  .chip {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 9px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  .chip-food  { background: #fff3e0; color: #e65100; }
+  .chip-sight { background: #e8f5e9; color: #1b5e20; }
+  .chip-show  { background: #fce4ec; color: #880e4f; }
+  .chip-sleep { background: #e8eaf6; color: #283593; }
+  .chip-walk  { background: #e0f2f1; color: #004d40; }
+
+  /* ── TIPS BOX ── */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .tip-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .tip-card .tip-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .tip-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .tip-card p {
+    font-size: 12px;
+    color: var(--stone);
+    line-height: 1.7;
+  }
+
+  /* ── TICKET TABLE ── */
+  .ticket-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .ticket-table th {
+    background: var(--ink);
+    color: var(--gold-lt);
+    padding: 10px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+  }
+  .ticket-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #f0ebe0;
+  }
+  .ticket-table tr:last-child td { border-bottom: none; }
+  .ticket-table tr:hover td { background: #faf8f3; }
+  .price { font-weight: 600; color: var(--rust); }
+
+  /* ── FOOTER ── */
+  .footer-bar {
+    background: var(--ink);
+    color: rgba(250,247,240,.45);
+    text-align: center;
+    padding: 28px 20px;
+    font-size: 12px;
+    margin-top: 60px;
+  }
+  .footer-bar strong { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero { padding: 44px 20px 40px; }
+    .wrap { padding: 0 16px; }
+    .day-header { flex-direction: row; }
+    .route-diagram { gap: 0; }
+    .train-rows th, .train-rows td { padding: 8px 10px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">🏮 2026 端午节假期出行策划</div>
+    <h1>晋韵三日<span>·</span><br>平遥古城 × 大同石窟</h1>
+    <p class="hero-sub">从北京出发，穿越两座世界遗产，感受晋商文化的传奇与北魏佛教艺术的震撼。</p>
+    <div class="hero-meta">
+      <div class="meta-badge"><strong>假期</strong>6月19日（周五）— 21日（周日）</div>
+      <div class="meta-badge"><strong>出发地</strong>北京</div>
+      <div class="meta-badge"><strong>交通</strong>全程高铁</div>
+      <div class="meta-badge"><strong>天气</strong>晴为主，气温 25–32°C</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ══ 路线总览 ══ -->
+  <div class="sec-head">
+    <h2>路线总览</h2>
+  </div>
+  <div class="route-diagram">
+    <div class="route-city">
+      <div class="city-name">🏙 北京</div>
+      <div class="city-sub">出发站</div>
+    </div>
+    <div class="route-arrow">
+      <div class="arrow-line"></div>
+      <div class="arrow-info">G625 约3h40m<br>北京丰台→平遥古城</div>
+    </div>
+    <div class="route-city">
+      <div class="city-name">🏯 平遥</div>
+      <div class="city-sub">Day 1–2上午</div>
+    </div>
+    <div class="route-arrow">
+      <div class="arrow-line"></div>
+      <div class="arrow-info">转太原南<br>约2h30m</div>
+    </div>
+    <div class="route-city">
+      <div class="city-name">🗿 大同</div>
+      <div class="city-sub">Day 2下午–3</div>
+    </div>
+    <div class="route-arrow">
+      <div class="arrow-line"></div>
+      <div class="arrow-info">G系列 约2h<br>大同南→北京北</div>
+    </div>
+    <div class="route-city">
+      <div class="city-name">🏙 北京</div>
+      <div class="city-sub">返程</div>
+    </div>
+  </div>
+
+  <!-- ══ 高铁方案 ══ -->
+  <div class="sec-head">
+    <h2>高铁方案</h2>
+  </div>
+
+  <!-- 去程 -->
+  <div class="train-block">
+    <div class="train-head">🚄 去程 · 6月19日（周五）北京 → 平遥古城</div>
+    <table class="train-rows">
+      <tr>
+        <th>车次</th><th>出发</th><th>到达</th><th>历时</th><th>票价（二等）</th><th>建议</th>
+      </tr>
+      <tr>
+        <td><span class="train-no">G625</span></td>
+        <td><span class="time-chip">10:38</span> 北京丰台</td>
+        <td><span class="time-chip">14:18</span> 平遥古城</td>
+        <td>3h40m</td>
+        <td class="price">239元</td>
+        <td><span class="tag-rec">✓ 推荐</span></td>
+      </tr>
+      <tr>
+        <td><span class="train-no">G2455</span></td>
+        <td><span class="time-chip">08:06</span> 北京北</td>
+        <td><span class="time-chip">12:14</span> 平遥古城</td>
+        <td>4h08m</td>
+        <td class="price">296.5元</td>
+        <td><span class="tag-alt">备选</span></td>
+      </tr>
+    </table>
+    <div class="train-note">💡 推荐 G625：10:38出发，不用起太早；14:18到平遥古城站，出站即可打车/步行入古城，下午时间充裕。节假日高铁一票难求，<strong>建议现在就在12306抢购</strong>。</div>
+  </div>
+
+  <!-- 平遥→大同 -->
+  <div class="train-block">
+    <div class="train-head">🚄 中段 · 6月20日（周六）平遥 → 大同（转太原南）</div>
+    <table class="train-rows">
+      <tr>
+        <th>车次</th><th>出发</th><th>中转</th><th>到达</th><th>历时</th><th>票价</th>
+      </tr>
+      <tr>
+        <td><span class="train-no">D1910<br>+D1046</span></td>
+        <td><span class="time-chip">13:53</span> 平遥古城</td>
+        <td>太原南 14:25到<br>14:36发（换乘11min）</td>
+        <td><span class="time-chip">16:27</span> 大同南</td>
+        <td>2h34m</td>
+        <td class="price">135.5元</td>
+        <td><span class="tag-rec">✓ 推荐</span></td>
+      </tr>
+      <tr>
+        <td><span class="train-no">D2582<br>+D2810</span></td>
+        <td><span class="time-chip">12:34</span> 平遥古城</td>
+        <td>太原南 13:06到<br>13:29发（换乘23min）</td>
+        <td><span class="time-chip">15:11</span> 大同南</td>
+        <td>2h37m</td>
+        <td class="price">131.5元</td>
+        <td><span class="tag-alt">备选</span></td>
+      </tr>
+    </table>
+    <div class="train-note">💡 推荐 D1910+D1046：上午深游平遥+参加又见平遥午场，13:53出发，16:27抵大同南，抵达后打车前往云冈石窟（约30分钟），15:00前的下午光线最美。太原南换乘仅11分钟，<strong>请提前确认站内换乘通道</strong>，跑起来！</div>
+  </div>
+
+  <!-- 返程 -->
+  <div class="train-block">
+    <div class="train-head">🚄 返程 · 6月21日（周日）大同 → 北京</div>
+    <table class="train-rows">
+      <tr>
+        <th>车次</th><th>出发</th><th>到达</th><th>历时</th><th>票价（二等）</th><th>建议</th>
+      </tr>
+      <tr>
+        <td><span class="train-no">G2530</span></td>
+        <td><span class="time-chip">10:11</span> 大同南</td>
+        <td><span class="time-chip">12:15</span> 北京北</td>
+        <td>2h04m</td>
+        <td class="price">约170元</td>
+        <td><span class="tag-rec">✓ 推荐</span></td>
+      </tr>
+      <tr>
+        <td><span class="train-no">G2534</span></td>
+        <td><span class="time-chip">14:xx</span> 大同南</td>
+        <td>约16:xx 北京北</td>
+        <td>约2h</td>
+        <td class="price">约170元</td>
+        <td><span class="tag-alt">可选（晚点返京）</span></td>
+      </tr>
+    </table>
+    <div class="train-note">💡 推荐 G2530：10:11出发，12:15到北京北，下午还有时间休息或处理事务。若想在大同多逛一会，可选14:xx班次，但节假日返程票紧，越早订越好。大同南站距市区约12公里，打车约20分钟。</div>
+  </div>
+
+  <!-- ══ 三日行程 ══ -->
+  <div class="sec-head">
+    <h2>三日详细行程</h2>
+  </div>
+
+  <!-- Day 1 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-badge" style="background: var(--day1);">
+        <div class="d-num">01</div>
+        <div class="d-label">DAY</div>
+      </div>
+      <div class="day-title">
+        <h3 style="color:var(--day1)">抵达平遥，登城漫游</h3>
+        <div class="day-date">6月19日（周五）· 端午节</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--train)"></div>
+          <div class="tl-time">上午 10:38</div>
+          <div class="tl-title">🚄 出发 <span class="chip chip-walk">G625 北京丰台</span></div>
+          <div class="tl-transit">G625 北京丰台 → 平遥古城，约3小时40分，二等座239元。提前到站候车，节假日高峰期建议提前60分钟到站。</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--day1)"></div>
+          <div class="tl-time">下午 14:18</div>
+          <div class="tl-title">📍 抵达平遥古城站，入住酒店 <span class="chip chip-sleep">住宿</span></div>
+          <div class="tl-desc">出站步行/打车约10分钟可到古城墙下。酒店推荐入住古城内客栈（明清院落改造），氛围感极佳。⚠️ 端午节假期一房难求，<strong>务必提前1个月预订</strong>。</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--day1)"></div>
+          <div class="tl-time">下午 15:30 — 17:30</div>
+          <div class="tl-title">🏯 平遥古城墙 <span class="chip chip-sight">景点</span></div>
+          <div class="tl-desc">登上这段自1370年起守护古城的城墙，全长6.4公里、高12米，傍晚斜光将青砖染成暖金色，是全程最具画面感的时刻。可选择步行2公里体验段，鸟瞰整座明清格局。</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--day1)"></div>
+          <div class="tl-time">下午 17:30 — 19:00</div>
+          <div class="tl-title">🏦 日升昌票号 <span class="chip chip-sight">景点</span></div>
+          <div class="tl-desc">中国第一家票号，晚清"汇通天下"的金融中枢。道光年间创立，鼎盛时期掌控全国半数以上的金融流通。含在平遥古城综合票内，建议留1小时细看。</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--day1)"></div>
+          <div class="tl-time">晚上 19:30</div>
+          <div class="tl-title">🍜 古城晚餐 <span class="chip chip-food">美食</span></div>
+          <div class="tl-desc">推荐在西大街或南大街寻一家本地馆子，品尝：<strong>平遥牛肉</strong>（百年老字号）、<strong>碗托</strong>（荞麦凉粉）、<strong>栲栳栳</strong>（莜面手工卷）。夜间古城灯笼高悬，适合慢逛消食。</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-badge" style="background: var(--day2);">
+        <div class="d-num">02</div>
+        <div class="d-label">DAY</div>
+      </div>
+      <div class="day-title">
+        <h3 style="color:var(--day2)">又见平遥 · 驰赴大同 · 石窟震撼</h3>
+        <div class="day-date">6月20日（周六）</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--day2)"></div>
+          <div class="tl-time">上午 08:00 — 10:00</div>
+          <div class="tl-title">⛩ 古县衙 <span class="chip chip-sight">景点</span></div>
+          <div class="tl-desc">建于1346年的明清县级衙署，全国保存最完整之一。早到可赶上 <strong>9:30场模拟公堂审判</strong> 表演，极具历史现场感。之后可顺路游览双林寺彩塑（约30分钟步行）。</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--rust)"></div>
+          <div class="tl-time">上午 11:00 — 12:30</div>
+          <div class="tl-title">🎭 又见平遥（午场） <span class="chip chip-show">演出</span></div>
+          <div class="tl-desc">节假日加场时间：上午10:30 / 中午14:00 / 下午16:00 / 晚上19:00 · 推荐选择 <strong>11:00前后场次</strong>。</div>
+          <div class="tl-show">
+            <div class="show-title">《又见平遥》情境体验剧</div>
+            <div class="show-meta">
+              <span>⏱ 时长约90分钟</span>
+              <span>💴 成人票238元/张</span>
+              <span>📍 又见平遥剧场（古城西门附近）</span>
+              <span>🎟 ⚠️ 节假日请至少提前7天预订！实名制购票，需提前将所有观演人员姓名+身份证号发给客服，1.2米以下儿童免票</span>
+            </div>
+          </div>
+          <div class="tl-desc" style="margin-top:8px">清末镖局故事，232名镖师为护血脉全部牺牲。沉浸式行走剧场，观众在五个移步换景的空间中随演员前行，面粉舞是情感高潮，令人动容。</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--day2)"></div>
+          <div class="tl-time">中午 12:30 — 13:30</div>
+          <div class="tl-title">🍽 平遥午餐 + 退房 <span class="chip chip-food">美食</span></div>
+          <div class="tl-desc">演出结束后就近用餐，推荐剧场附近"人在北方"餐厅（评价颇高，据说赠油茶）。餐后回客栈取行李，打车前往平遥古城站。</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--train)"></div>
+          <div class="tl-time">下午 13:53</div>
+          <div class="tl-title">🚄 平遥 → 大同（转太原南） <span class="chip chip-walk">出发</span></div>
+          <div class="tl-transit">D1910 平遥古城 13:53发 → 太原南 14:25到（32min）<br>换乘 11分钟⚡ → D1046 太原南 14:36发 → 大同南 16:27到<br>全程约2h34m，票价约135.5元</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--day2)"></div>
+          <div class="tl-time">下午 16:27 — 17:00</div>
+          <div class="tl-title">📍 抵大同南，打车前往云冈 <span class="chip chip-walk">转场</span></div>
+          <div class="tl-desc">大同南站打车至云冈石窟约30公里，约30–40分钟，约50–70元。景区闭园时间 17:00，抵达后约有30–40分钟游览主洞。若怕时间紧，也可次日一早再游云冈。</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--day2)"></div>
+          <div class="tl-time">下午 17:00后 / 次日</div>
+          <div class="tl-title">🏨 入住大同古城内酒店 <span class="chip chip-sleep">住宿</span></div>
+          <div class="tl-desc">推荐住大同古城内（平城区），方便次日步行游览华严寺、善化寺。晚餐可尝大同刀削面、烧卖，或去古城内餐厅品尝本地特色。</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-badge" style="background: var(--day3);">
+        <div class="d-num">03</div>
+        <div class="d-label">DAY</div>
+      </div>
+      <div class="day-title">
+        <h3 style="color:var(--day3)">云冈石窟 · 大同古建 · 返京</h3>
+        <div class="day-date">6月21日（周日）</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--day3)"></div>
+          <div class="tl-time">上午 08:30 — 11:30</div>
+          <div class="tl-title">🗿 云冈石窟 <span class="chip chip-sight">世界遗产</span></div>
+          <div class="tl-desc">北魏皇家石窟群，开凿于公元460年，共45个主要洞窟、51000余尊造像。建议早晨8:30开门即入，避开人流高峰。必看：第5、6窟（释迦牟尼巨像）、第20窟（露天大佛）。光线上午从东侧射入，佛像面部明暗层次最丰富。官网或微信小程序提前预约，节假日现场排队极长。</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--day3)"></div>
+          <div class="tl-time">中午 11:30 — 13:00</div>
+          <div class="tl-title">🍜 返回大同市区用餐 <span class="chip chip-food">美食</span></div>
+          <div class="tl-desc">打车回市区（约30min），品尝<strong>大同刀削面</strong>（正宗武术刀削，筋道汤浓）、<strong>大同烧卖</strong>（与包头烧卖齐名）。</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--day3)"></div>
+          <div class="tl-time">下午 13:30 — 15:00</div>
+          <div class="tl-title">🏛 华严寺 + 善化寺 <span class="chip chip-sight">古建</span></div>
+          <div class="tl-desc"><strong>华严寺</strong>：中国现存最大的辽金时期木构建筑群，无钉榫卯工艺令人叹为观止，大雄宝殿气势恢宏。<br><strong>善化寺</strong>：金代建筑典范，<strong>免费开放</strong>，登上普贤阁可俯瞰大同古城全貌。两寺步行相距约10分钟，均在古城内。</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot" style="color:var(--train)"></div>
+          <div class="tl-time">上午 10:11（或下午）</div>
+          <div class="tl-title">🚄 返程 大同 → 北京 <span class="chip chip-walk">返程</span></div>
+          <div class="tl-transit">G2530 大同南 10:11发 → 北京北 12:15到，约2小时<br>或选下午班次（约14:xx）返京，票价约170元<br>⚠️ 大同南距市区约12公里，打车约20分钟，出发前留足时间</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 门票费用 ══ -->
+  <div class="sec-head">
+    <h2>景点门票一览</h2>
+  </div>
+  <table class="ticket-table">
+    <tr>
+      <th>景点</th><th>票价</th><th>包含项目</th><th>预订方式</th>
+    </tr>
+    <tr>
+      <td>平遥古城综合票</td>
+      <td class="price">约120元</td>
+      <td>城墙、县衙、日升昌等多处</td>
+      <td>官方窗口或携程/美团</td>
+    </tr>
+    <tr>
+      <td>《又见平遥》演出</td>
+      <td class="price">238元（成人）<br>168元（学生）</td>
+      <td>90分钟沉浸式演出，实名制</td>
+      <td>⚠️ 至少提前7天！<br>微信公众号"又见平遥情境体验剧"</td>
+    </tr>
+    <tr>
+      <td>云冈石窟</td>
+      <td class="price">120元（旺季）</td>
+      <td>全园参观</td>
+      <td>提前网上预约，节假日限流</td>
+    </tr>
+    <tr>
+      <td>华严寺</td>
+      <td class="price">80元</td>
+      <td>—</td>
+      <td>现场购票</td>
+    </tr>
+    <tr>
+      <td>善化寺</td>
+      <td class="price">免费</td>
+      <td>—</td>
+      <td>无需购票</td>
+    </tr>
+    <tr style="background:#faf7f0">
+      <td><strong>预计合计（人均）</strong></td>
+      <td class="price" style="font-size:15px"><strong>约 558元+</strong></td>
+      <td colspan="2">不含高铁票、住宿、餐饮、打车</td>
+    </tr>
+  </table>
+
+  <!-- ══ 实用贴士 ══ -->
+  <div class="sec-head">
+    <h2>出行贴士</h2>
+  </div>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-icon">🎫</div>
+      <h4>高铁票 · 现在就买</h4>
+      <p>端午3天假是山西旅游高峰，北京→平遥的高铁极易售罄。G625（10:38丰台）和返程G2530是最优选，在12306立即预订。</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🎭</div>
+      <h4>又见平遥 · 提前7天</h4>
+      <p>实名制演出，节假日加场但仍一票难求。关注微信公众号"又见平遥情境体验剧"提前预订，需提供全部观演人员的姓名和身份证号。</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🏨</div>
+      <h4>住宿 · 提前1个月</h4>
+      <p>平遥古城内客栈端午假期约7–10天前就会满房。推荐入住古城内明清院落改造的特色客栈，体验感远超城外酒店。</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🗿</div>
+      <h4>云冈石窟 · 预约入园</h4>
+      <p>节假日实行限流，建议提前在云冈石窟官方小程序或携程预约。早晨8:30开门时入园人少，光线好，体验最佳。</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">☀️</div>
+      <h4>天气 · 防晒必备</h4>
+      <p>6月中旬山西晴多，日照强，气温25–32°C。城墙、石窟均暴露在阳光下，建议带遮阳帽、防晒霜。早晚温差约8°C，带一件薄外套。</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">⚡</div>
+      <h4>太原南换乘11分钟</h4>
+      <p>平遥→大同推荐方案中，D1910到太原南后需在11分钟内换乘D1046。到站后快步前行，提前确认下一趟车的站台。如觉紧张可选换乘23分钟的备选方案。</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🚖</div>
+      <h4>城内交通 · 步行为主</h4>
+      <p>平遥古城内景点集中，步行即可串联。大同市区景点可打滴滴出行。云冈石窟距市区较远（约30公里），建议来回各打车一次，约50–70元。</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🏮</div>
+      <h4>端午习俗</h4>
+      <p>端午节当天平遥古城可能有龙舟、挂菖蒲、赛诗等民俗活动，注意关注景区公告。城内商家可能出售香囊、艾草等节日物品，是不错的伴手礼。</p>
+    </div>
+  </div>
+
+  <!-- ══ 费用估算 ══ -->
+  <div class="sec-head">
+    <h2>人均费用估算</h2>
+  </div>
+  <table class="ticket-table">
+    <tr><th>项目</th><th>估算金额（人均）</th><th>备注</th></tr>
+    <tr><td>高铁票（全程）</td><td class="price">约 550元</td><td>去程239+中段135+返程170（含税费）</td></tr>
+    <tr><td>景点门票</td><td class="price">约 558元</td><td>平遥综合票+又见平遥+云冈+华严寺</td></tr>
+    <tr><td>住宿（2晚）</td><td class="price">300–600元</td><td>平遥古城客栈1晚，大同1晚</td></tr>
+    <tr><td>餐饮</td><td class="price">约 200–300元</td><td>3日三餐，人均60–100元/天</td></tr>
+    <tr><td>城内交通</td><td class="price">约 100–150元</td><td>打车+景区内交通</td></tr>
+    <tr style="background:#faf7f0">
+      <td><strong>合计（人均）</strong></td>
+      <td class="price" style="font-size:15px"><strong>约 1700–2200元</strong></td>
+      <td>不含购物伴手礼</td>
+    </tr>
+  </table>
+
+</main>
+
+<footer class="footer-bar">
+  <strong>🏮 2026 端午节 · 山西平遥 + 大同三日游策划</strong><br>
+  高铁时刻以 12306 实时信息为准 · 演出票务以官方公众号为准 · 建议出发前再次确认各景区开放情况
+</footer>
+
+</body>
+</html>
